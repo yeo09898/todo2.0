@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>My Todo App</title>
+</head>
+
+<body>
+    <!-- Page Content -->
+    <div class="container rounded col-6" style="background-color:rgba(82,85,100,0.8)">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">
+            <img src='image/title.png' height="80" width="320">
+            <a onclick="showNewEventModal()"><img src="image/plus-flat2.png" style="float:right;width:80px;height:80px;"></a>
+        </h1>
+
+        <!-- Project One -->
+        <div id="list">
+        </div>
+    </div>
+    <!-- /.container -->
+    <div class="modal fade" id="newevent" role="dialog" tabindex="-1" style="padding-top:100px;">
+        <div class="modal-dialog rounded" role="document" style="background-color:rgba(255,255,255,0.8)">
+            <div class="modal-content" style="height: 200px; overflow-y: auto">
+                <div class="controls">
+                    <h2>New Event</h2>
+                    <input type="text" id="input">
+                    <button class="btn btn-default" type="button" data-dismiss="modal" style="float:right">Close</button>
+                    <button class="btn btn-success" type="button" id="add" style="float:right;margin-right: 5px;" onclick="addItem()">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
