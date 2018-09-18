@@ -4,7 +4,34 @@ function showNewEventModal() {
 
 var list = document.getElementById('list');
 
-//add.addEventListener('click', addItem);
+function reload() {
+    if (localStorage.getItem('todos') != null) {
+        let todos = localStorage.getItem('todos').split(';')
+        let unit = document.createElement('div')
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i] == '')
+                continue;
+            let row = document.createElement('div')
+            row.className = "row"
+            let col = document.createElement('div')
+            col.className = "col-md-12"
+            let h = document.createElement('h1')
+            h.appendChild(document.createTextNode(todos[i]))
+            col.appendChild(h)
+            let button = document.createElement('button')
+            button.className = "btn btn-success"
+            button.setAttribute("style", "float:right;margin-right: 10px;")
+            button.setAttribute("onclick", `removeItem(${i})`)
+            button.appendChild(document.createTextNode("Done"))
+            col.appendChild(button)
+            row.appendChild(col)
+            unit.appendChild(row)
+            unit.appendChild(document.createElement('hr'))
+            list.appendChild(unit)
+        }
+    }
+}
+reload()
 
 function addItem() {
     let unit = document.createElement('div')
@@ -21,6 +48,11 @@ function addItem() {
             controls.removeChild(warn)
         }, 3000);
     } else {
+        let temp = input.value;
+        if (localStorage.getItem('todos') != null) {
+            temp = temp + ';' + localStorage.getItem('todos');
+        }
+        localStorage.setItem('todos', temp)
         let row = document.createElement('div')
         row.className = "row"
         let col = document.createElement('div')
@@ -39,14 +71,21 @@ function addItem() {
         unit.appendChild(document.createElement('hr'))
         list.insertBefore(unit, list.children[0])
         rearrange(1);
-        setTimeout(() => {
-            unit.className = 'visual'
-        }, 2);
         input.value = ''
     }
 }
 
 function removeItem(i) {
+    let s = localStorage.getItem('todos').split(';')
+    let res = '';
+    for (let j = 0; j < s.length; j++) {
+        if (j != i) {
+            res += s[j]
+            if (j < s.length - 1)
+                res += ';'
+        }
+    }
+    localStorage.setItem('todos', res)
     list.removeChild(list.children[i])
     rearrange(i);
 }
